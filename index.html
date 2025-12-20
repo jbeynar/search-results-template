@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Search Results</title>
     <style>
-        /* CSS for styling the user search results page */
-
-        /* Basic Reset and Typography */
         :root {
             --card-bg: #ffffff;
             --body-bg: #ffffff;
             --text-color: #333333;
             --title-color: #333333;
             --border-color: #cccccc;
-            --shadow: none;
         }
 
         body {
@@ -31,33 +27,24 @@
             margin-bottom: 2rem;
         }
 
-        /* Layout Logic: Responsive Grid Container */
         .user-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0;
             max-width: 1200px;
             margin: 0 auto;
-            border: 1px solid var(--border-color);
-            border-bottom: none; /* Bottom border will be on the last cards */
-        }
-
-        /* User Card Styling */
-        .user-card {
-            background-color: var(--card-bg);
-            border-radius: 0;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        /* Add a left border to the cards in the second column */
-        .user-card:nth-child(even) {
+            border-top: 1px solid var(--border-color);
             border-left: 1px solid var(--border-color);
         }
 
-        /* Card Header: Avatar and User Info */
+        .user-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
         .card-header {
             display: flex;
             align-items: center;
@@ -90,15 +77,13 @@
             margin-top: 5px;
         }
 
-        /* JIRA Tickets Section */
         .jira-tickets {
             margin-top: 0.5rem;
             padding-top: 1rem;
         }
 
         .jira-tickets h3 {
-            margin-top: 0;
-            margin-bottom: 0.5rem;
+            margin: 0 0 0.5rem 0;
             color: var(--title-color);
             font-size: 1.1rem;
         }
@@ -111,40 +96,25 @@
 
         .jira-tickets li {
             background-color: #ffffff;
-            padding: 0.5rem;
-            padding-bottom: 0.3rem; /* Further reduced padding at the bottom */
-            border-radius: 0;
-            margin-bottom: 0.2rem;
+            padding: 0.2rem 0.5rem;
+            margin-bottom: 0;
             font-size: 0.9rem;
-            line-height: 1; /* Minimal line height for maximum conciseness */
+            line-height: 1.2;
         }
         
         .jira-tickets li .ticket-id {
-            font-weight: bold;
+            font-weight: normal;
             color: var(--text-color);
         }
 
-        /* Responsive Design: Media query for tablets and mobile devices */
-        @media (max-width: 992px) {
-            .user-grid {
-                /* On medium screens, still 2 columns */
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
             }
             .user-grid {
-                /* On small screens, stack the cards in a single column */
                 grid-template-columns: 1fr;
             }
-            /* Remove the left border on the second column for mobile view */
-            .user-card:nth-child(even) {
-                border-left: none;
-            }
         }
-
     </style>
 </head>
 <body>
