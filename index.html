@@ -5,135 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Search Results</title>
     <style>
-        :root {
-            --card-bg: #ffffff;
-            --body-bg: #ffffff;
-            --text-color: #333333;
-            --title-color: #333333;
-            --border-color: #cccccc;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
-            padding: 2rem;
-            background-color: var(--body-bg);
-            color: var(--text-color);
+            padding: 1rem;
+            background: #fff;
+            color: #333;
         }
-
         h1 {
             text-align: center;
-            color: var(--title-color);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
-
         .user-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             max-width: 1200px;
             margin: 0 auto;
-            border-top: 1px solid var(--border-color);
-            border-left: 1px solid var(--border-color);
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
         }
-
         .user-card {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+            padding: 1rem;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
         }
-
         .card-header {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
         }
-
         .avatar {
-            width: 75px;
-            height: 75px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            margin-right: 1.5rem;
-            object-fit: cover;
-            border: 1px solid var(--border-color);
+            margin-right: 1rem;
         }
-
         .user-info h2 {
-            margin: 0 0 0.25rem 0;
-            color: var(--text-color);
-            font-size: 1.5rem;
+            margin: 0 0 0.25rem;
+            font-size: 1.2rem;
         }
-
         .user-info p {
             margin: 0;
-            color: var(--text-color);
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .jira-tickets h3 {
+            margin: 1rem 0 0.5rem;
             font-size: 1rem;
         }
-        .user-info .location {
-            font-size: 0.9rem;
-            color: #666666;
-            margin-top: 5px;
-        }
-
-        .jira-tickets {
-            margin-top: 0.5rem;
-            padding-top: 1rem;
-        }
-
-        .jira-tickets h3 {
-            margin: 0 0 0.5rem 0;
-            color: var(--title-color);
-            font-size: 1.1rem;
-        }
-
         .jira-tickets ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
         }
-
         .jira-tickets li {
-            background-color: #ffffff;
-            padding: 0.2rem 0.5rem;
-            margin-bottom: 0;
-            font-size: 0.9rem;
-            line-height: 1.2;
+            font-size: 0.85rem;
+            line-height: 1.3;
         }
-        
-        .jira-tickets li .ticket-id {
-            font-weight: normal;
-            color: var(--text-color);
-        }
-
         @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            .user-grid {
-                grid-template-columns: 1fr;
-            }
+            .user-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-
     <header>
         <h1>User Search Results</h1>
     </header>
-
     <main>
-        <!-- The user grid will be populated by JavaScript -->
-        <section id="user-grid" class="user-grid" aria-live="polite" aria-atomic="true">
-            <!-- User cards will be inserted here -->
-        </section>
+        <section id="user-grid" class="user-grid"></section>
     </main>
-
     <script>
-        // JavaScript for mock data generation and DOM manipulation
-
-        // Data Structure: An array of user objects.
         const users = [
             {
                 avatar: 'https://randomuser.me/api/portraits/women/0.jpg',
@@ -143,10 +84,7 @@
                 location: 'Bangalore, India',
                 jiraTickets: [
                     { id: 'WEB-1101', title: 'Implement new user dashboard UI' },
-                    { id: 'WEB-1105', title: 'Fix CSS bug on login page' },
-                    { id: 'API-789', title: 'Integrate with new payment gateway' },
-                    { id: 'DSGN-450', title: 'Review and approve new design mockups' },
-                    { id: 'QA-2023', title: 'Write unit tests for authentication module' }
+                    { id: 'WEB-1105', title: 'Fix CSS bug on login page' }
                 ]
             },
             {
@@ -157,315 +95,103 @@
                 location: 'Warsaw, Poland',
                 jiraTickets: [
                     { id: 'API-801', title: 'Optimize database query performance' },
-                    { id: 'API-815', title: 'Develop user profile endpoint' },
-                    { id: 'SEC-303', title: 'Address Cross-Site Scripting (XSS) vulnerability' },
-                    { id: 'INFRA-512', title: 'Migrate service to new Kubernetes cluster' },
-                    { id: 'BUG-9942', title: 'Investigate and resolve intermittent 503 errors' }
+                    { id: 'API-815', title: 'Develop user profile endpoint' }
                 ]
             },
             {
                 avatar: 'https://randomuser.me/api/portraits/women/1.jpg',
-                fullName: 'Emily Carter',
-                jobTitle: 'Lead Software Engineer',
-                team: 'Odyssey',
+                fullName: 'Emily White',
+                jobTitle: 'UI/UX Designer',
+                team: 'Creative',
                 location: 'London, UK',
                 jiraTickets: [
-                    { id: 'ARCH-101', title: 'Design architecture for microservices' },
-                    { id: 'PROJ-2024', title: 'Plan and scope Q3 feature releases' },
-                    { id: 'CODE-601', title: 'Refactor legacy user service' },
-                    { id: 'PERF-404', title: 'Analyze and improve API response times' },
-                    { id: 'DOCS-707', title: 'Update developer onboarding documentation' }
+                    { id: 'DSGN-100', title: 'Redesign login page' },
+                    { id: 'DSGN-101', title: 'Conduct user research' }
                 ]
             },
             {
                 avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-                fullName: 'Michael Chen',
+                fullName: 'Michael Green',
                 jobTitle: 'DevOps Engineer',
-                team: 'Infrastructure',
-                location: 'Toronto, Canada',
+                team: 'Infra',
+                location: 'Berlin, Germany',
                 jiraTickets: [
-                    { id: 'CI-401', title: 'Optimize CI/CD pipeline build times' },
-                    { id: 'K8S-502', title: 'Upgrade EKS cluster to version 1.28' },
-                    { id: 'LOG-603', title: 'Implement centralized logging with ELK stack' },
-                    { id: 'MON-704', title: 'Set up new monitoring dashboards in Grafana' },
-                    { id: 'SEC-805', title: 'Patch server vulnerabilities for CVE-2024-1234' }
+                    { id: 'OPS-200', title: 'Automate deployment' },
+                    { id: 'OPS-201', title: 'Setup monitoring alerts' }
                 ]
             },
             {
                 avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
-                fullName: 'Hans Müller',
-                jobTitle: 'Full-Stack Developer',
-                team: 'Phoenix',
-                location: 'Berlin, Germany',
+                fullName: 'Sophia Brown',
+                jobTitle: 'QA Engineer',
+                team: 'Quality',
+                location: 'Sydney, Australia',
                 jiraTickets: [
-                    { id: 'FS-101', title: 'Build new feature for real-time notifications' },
-                    { id: 'DB-202', title: 'Schema migration for new user settings' },
-                    { id: 'TEST-303', title: 'Implement end-to-end tests with Cypress' },
-                    { id: 'UI-404', title: 'Update React components to new design system' },
-                    { id: 'BUG-505', title: 'Fix broken image uploads' }
+                    { id: 'QA-300', title: 'Write new test cases' },
+                    { id: 'QA-301', title: 'Perform regression testing' }
                 ]
             },
             {
                 avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
-                fullName: 'John Smith',
-                jobTitle: 'Software Engineer',
-                team: 'Vanguard',
+                fullName: 'William Black',
+                jobTitle: 'Data Scientist',
+                team: 'Analytics',
                 location: 'New York, USA',
                 jiraTickets: [
-                    { id: 'PROJ-987', title: 'Develop new search algorithm' },
-                    { id: 'BUG-456', title: 'Fix memory leak in data processing module' },
-                    { id: 'FEAT-321', title: 'Add export-to-CSV functionality' },
-                    { id: 'TEST-654', title: 'Improve test coverage for core API' },
-                    { id: 'REFC-987', title: 'Refactor caching layer for better performance' }
+                    { id: 'DATA-400', title: 'Build predictive model' },
+                    { id: 'DATA-401', title: 'Analyze user behavior' }
                 ]
             },
             {
                 avatar: 'https://randomuser.me/api/portraits/women/3.jpg',
-                fullName: 'Olivia Dubois',
-                jobTitle: 'UI/UX Designer',
-                team: 'Design',
+                fullName: 'Olivia Red',
+                jobTitle: 'Product Manager',
+                team: 'Product',
                 location: 'Paris, France',
                 jiraTickets: [
-                    { id: 'DSGN-123', title: 'Create wireframes for new mobile app' },
-                    { id: 'UX-234', title: 'Conduct user research for checkout flow' },
-                    { id: 'UI-345', title: 'Design icons for the settings page' },
-                    { id: 'PROTO-456', title: 'Build interactive prototype in Figma' },
-                    { id: 'STYLE-567', title: 'Update style guide with new color palette' }
+                    { id: 'PROD-500', title: 'Define Q3 roadmap' },
+                    { id: 'PROD-501', title: 'Gather user feedback' }
                 ]
             },
             {
                 avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
-                fullName: 'Kenji Tanaka',
-                jobTitle: 'Data Scientist',
-                team: 'Analytics',
+                fullName: 'James Blue',
+                jobTitle: 'Mobile Developer',
+                team: 'Mobile',
                 location: 'Tokyo, Japan',
                 jiraTickets: [
-                    { id: 'DATA-111', title: 'Build predictive model for user churn' },
-                    { id: 'ML-222', title: 'Train new recommendation engine' },
-                    { id: 'VIZ-333', title: 'Create dashboard for marketing KPIs' },
-                    { id: 'ETL-444', title: 'Develop new data ingestion pipeline' },
-                    { id: 'RPT-555', title: 'Generate quarterly business intelligence report' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/women/4.jpg',
-                fullName: 'Fatima Al-Fassi',
-                jobTitle: 'QA Engineer',
-                team: 'Quality Assurance',
-                location: 'Dubai, UAE',
-                jiraTickets: [
-                    { id: 'QA-1010', title: 'Perform regression testing for release 2.5' },
-                    { id: 'AUTO-2020', title: 'Write automated tests for API endpoints' },
-                    { id: 'LOAD-3030', title: 'Conduct load testing on the new infrastructure' },
-                    { id: 'MAN-4040', title: 'Manual exploratory testing of new features' },
-                    { id: 'BUG-5050', title: 'Verify fix for critical production bug' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
-                fullName: 'David Garcia',
-                jobTitle: 'Cloud Architect',
-                team: 'Infrastructure',
-                location: 'Madrid, Spain',
-                jiraTickets: [
-                    { id: 'AZURE-100', title: 'Design multi-region disaster recovery plan' },
-                    { id: 'COST-200', title: 'Optimize cloud spending and resource allocation' },
-                    { id: 'IAC-300', title: 'Implement Terraform for infrastructure as code' },
-                    { id: 'NET-400', title: 'Configure VNet peering and network security groups' },
-                    { id: 'MIG-500', title: 'Plan migration from on-prem to Azure' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/women/5.jpg',
-                fullName: 'Chloe Williams',
-                jobTitle: 'Junior Developer',
-                team: 'Odyssey',
-                location: 'Sydney, Australia',
-                jiraTickets: [
-                    { id: 'BUG-1122', title: 'Fix typo on the contact page' },
-                    { id: 'FEAT-1133', title: 'Add a "Back to Top" button' },
-                    { id: 'CSS-1144', title: 'Adjust padding on mobile view' },
-                    { id: 'DOCS-1155', title: 'Document the user profile component' },
-                    { id: 'TEST-1166', title: 'Write unit tests for a utility function' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
-                fullName: 'Liam O\'Sullivan',
-                jobTitle: 'Site Reliability Engineer',
-                team: 'SRE',
-                location: 'Dublin, Ireland',
-                jiraTickets: [
-                    { id: 'SRE-101', title: 'Improve monitoring and alerting for service X' },
-                    { id: 'SRE-102', title: 'Create runbook for handling database failover' },
-                    { id: 'SRE-103', title: 'Reduce MTTR for P1 incidents by 10%' },
-                    { id: 'SRE-104', title: 'Automate deployment rollback process' },
-                    { id: 'SRE-105', title: 'Conduct post-mortem for last week\'s outage' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/women/6.jpg',
-                fullName: 'Maria Rodriguez',
-                jobTitle: 'Product Manager',
-                team: 'Product',
-                location: 'Mexico City, Mexico',
-                jiraTickets: [
-                    { id: 'PROD-501', title: 'Define requirements for Q4 epic' },
-                    { id: 'PROD-502', title: 'Analyze user feedback from survey' },
-                    { id: 'PROD-503', title: 'Create product roadmap for 2025' },
-                    { id: 'PROD-504', title: 'Groom and prioritize the product backlog' },
-                    { id: 'PROD-505', title: 'Meet with stakeholders to demo new feature' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
-                fullName: 'Alex Johnson',
-                jobTitle: 'Security Analyst',
-                team: 'Security',
-                location: 'Austin, USA',
-                jiraTickets: [
-                    { id: 'SEC-901', title: 'Perform penetration testing on the new API' },
-                    { id: 'SEC-902', title: 'Review and update access control policies' },
-                    { id: 'SEC-903', title: 'Investigate suspicious login activity' },
-                    { id: 'SEC-904', title: 'Configure WAF rules for new endpoint' },
-                    { id: 'SEC-905', title: 'Conduct security awareness training' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/women/7.jpg',
-                fullName: 'Isabella Rossi',
-                jobTitle: 'Mobile Developer (iOS)',
-                team: 'Mobile',
-                location: 'Rome, Italy',
-                jiraTickets: [
-                    { id: 'IOS-701', title: 'Develop new feature using SwiftUI' },
-                    { id: 'IOS-702', title: 'Fix crash related to CoreData' },
-                    { id: 'IOS-703', title: 'Update app for latest iOS version' },
-                    { id: 'IOS-704', title: 'Integrate with Apple HealthKit' },
-                    { id: 'IOS-705', title: 'Publish new build to TestFlight' }
-                ]
-            },
-             {
-                avatar: 'https://randomuser.me/api/portraits/men/7.jpg',
-                fullName: 'Wei Zhang',
-                jobTitle: 'Machine Learning Engineer',
-                team: 'AI/ML',
-                location: 'Shanghai, China',
-                jiraTickets: [
-                    { id: 'ML-301', title: 'Deploy sentiment analysis model' },
-                    { id: 'ML-302', title: 'Retrain image recognition model' },
-                    { id: 'ML-303', title: 'Optimize model inference speed' },
-                    { id: 'ML-304', title: 'A/B test new recommendation algorithm' },
-                    { id: 'ML-305', title: 'Explore use of new NLP library' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
-                fullName: 'Lucas Pereira',
-                jobTitle: 'Mobile Developer (Android)',
-                team: 'Mobile',
-                location: 'São Paulo, Brazil',
-                jiraTickets: [
-                    { id: 'AND-601', title: 'Build new feature with Jetpack Compose' },
-                    { id: 'AND-602', title: 'Resolve ANR (Application Not Responding) error' },
-                    { id: 'AND-603', title: 'Refactor networking layer to use Kotlin Coroutines' },
-                    { id: 'AND-604', title: 'Implement Material You design components' },
-                    { id: 'AND-605', title: 'Prepare app for release on Google Play Store' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/men/8.jpg',
-                fullName: 'Sophie Dubois',
-                jobTitle: 'Scrum Master',
-                team: 'Agile Practice',
-                location: 'Montreal, Canada',
-                jiraTickets: [
-                    { id: 'AGILE-10', title: 'Facilitate daily stand-up meetings' },
-                    { id: 'AGILE-20', title: 'Organize sprint planning and review sessions' },
-                    { id: 'AGILE-30', title: 'Remove impediments blocking team progress' },
-                    { id: 'AGILE-40', title: 'Coach team on Agile principles and practices' },
-                    { id: 'AGILE-50', title: 'Report on sprint velocity and burn-down charts' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/women/9.jpg',
-                fullName: 'Noah Kim',
-                jobTitle: 'Systems Administrator',
-                team: 'IT Operations',
-                location: 'Seoul, South Korea',
-                jiraTickets: [
-                    { id: 'SYS-101', title: 'Patch Linux servers for latest kernel update' },
-                    { id: 'SYS-102', title: 'Manage user accounts and permissions in Active Directory' },
-                    { id: 'SYS-103', title: 'Monitor server performance and disk space' },
-                    { id: 'SYS-104', title: 'Troubleshoot network connectivity issues' },
-                    { id: 'SYS-105', title: 'Perform daily backups of critical systems' }
-                ]
-            },
-            {
-                avatar: 'https://randomuser.me/api/portraits/men/9.jpg',
-                fullName: 'Freja Nielsen',
-                jobTitle: 'Technical Writer',
-                team: 'Documentation',
-                location: 'Copenhagen, Denmark',
-                jiraTickets: [
-                    { id: 'DOCS-801', title: 'Write public API documentation for v3' },
-                    { id: 'DOCS-802', title: 'Create internal guide for new microservice' },
-                    { id: 'DOCS-803', title: 'Update getting started tutorials' },
-                    { id: 'DOCS-804', title: 'Review and edit release notes' },
-                    { id: 'DOCS-805', title: 'Create video tutorial for a complex feature' }
+                    { id: 'MOB-600', title: 'Implement push notifications' },
+                    { id: 'MOB-601', title: 'Fix iOS compatibility bug' }
                 ]
             }
         ];
 
-        /**
-         * Function to generate the HTML for a single user card.
-         * @param {object} user - The user data object.
-         * @returns {string} - The HTML string for the user card.
-         */
         function createUserCard(user) {
-            // Generate the list of JIRA tickets
-            const jiraTicketsHtml = user.jiraTickets.map(ticket => `
-                <li>
-                    <span class="ticket-id" aria-label="JIRA Ticket ID">${ticket.id}</span>: 
-                    <span aria-label="JIRA Ticket Title">${ticket.title}</span>
-                </li>
-            `).join('');
-
-            // Return the full card HTML structure with semantic tags and ARIA attributes
+            const jiraTicketsHtml = user.jiraTickets.map(ticket => `<li>${ticket.id}: ${ticket.title}</li>`).join('');
             return `
-                <article class="user-card" aria-labelledby="user-name-${user.fullName.replace(/\s+/g, '-')}">
+                <article class="user-card">
                     <header class="card-header">
-                        <img src="${user.avatar}" alt="Avatar for ${user.fullName}" class="avatar">
+                        <img src="${user.avatar}" alt="${user.fullName}" class="avatar">
                         <div class="user-info">
-                            <h2 id="user-name-${user.fullName.replace(/\s+/g, '-')}">${user.fullName}</h2>
-                            <p class="job-title">${user.jobTitle}</p>
-                            <p class="team-name">Team: ${user.team}</p>
-                            <p class="location">${user.location}</p>
+                            <h2>${user.fullName}</h2>
+                            <p>${user.jobTitle}</p>
+                            <p>Team: ${user.team}</p>
+                            <p>${user.location}</p>
                         </div>
                     </header>
-                    <section class="jira-tickets" aria-labelledby="jira-heading-${user.fullName.replace(/\s+/g, '-')}">
-                        <h3 id="jira-heading-${user.fullName.replace(/\s+/g, '-')}">JIRA Tickets</h3>
+                    <section class="jira-tickets">
+                        <h3>JIRA Tickets</h3>
                         <ul>${jiraTicketsHtml}</ul>
                     </section>
                 </article>
             `;
         }
 
-        /**
-         * Function to render all user cards into the grid.
-         */
         function renderUsers() {
-            const userGrid = document.getElementById('user-grid');
-            if (userGrid) {
-                // Generate all cards and join them into a single string
-                const allUsersHtml = users.map(createUserCard).join('');
-                userGrid.innerHTML = allUsersHtml;
-            }
+            document.getElementById('user-grid').innerHTML = users.map(createUserCard).join('');
         }
 
-        // Wait for the DOM to be fully loaded before rendering users
         document.addEventListener('DOMContentLoaded', renderUsers);
-
     </script>
 </body>
 </html>
