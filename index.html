@@ -34,27 +34,27 @@
         /* Layout Logic: Responsive Grid Container */
         .user-grid {
             display: grid;
-            /* On larger screens, create two columns of equal width (1fr) */
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: 0;
             max-width: 1200px;
             margin: 0 auto;
+            border: 1px solid var(--border-color);
+            border-bottom: none; /* Bottom border will be on the last cards */
         }
 
         /* User Card Styling */
         .user-card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
             border-radius: 0;
             padding: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s ease-in-out;
             display: flex;
             flex-direction: column;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .user-card:hover {
-            transform: translateY(-5px);
+        /* Add a left border to the cards in the second column */
+        .user-card:nth-child(even) {
+            border-left: 1px solid var(--border-color);
         }
 
         /* Card Header: Avatar and User Info */
@@ -112,9 +112,11 @@
         .jira-tickets li {
             background-color: #ffffff;
             padding: 0.5rem;
+            padding-bottom: 0.3rem; /* Further reduced padding at the bottom */
             border-radius: 0;
             margin-bottom: 0.2rem;
             font-size: 0.9rem;
+            line-height: 1; /* Minimal line height for maximum conciseness */
         }
         
         .jira-tickets li .ticket-id {
@@ -136,6 +138,10 @@
             .user-grid {
                 /* On small screens, stack the cards in a single column */
                 grid-template-columns: 1fr;
+            }
+            /* Remove the left border on the second column for mobile view */
+            .user-card:nth-child(even) {
+                border-left: none;
             }
         }
 
