@@ -66,15 +66,16 @@
             .user-grid { grid-template-columns: 1fr; }
         }
     </style>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
     <header>
         <h1>User Search Results</h1>
     </header>
-    <main>
-        <section id="user-grid" class="user-grid"></section>
-    </main>
-    <script>
+    <main id="root"></main>
+    <script type="text/babel">
         const users = [
             { // JIRA change
                 avatar: 'https://randomuser.me/api/portraits/women/0.jpg',
@@ -189,32 +190,44 @@
             }
         ];
 
-        function createUserCard(user) {
-            const jiraTicketsHtml = user.jiraTickets.map(ticket => `<li>${ticket.id}: ${ticket.title}</li>`).join('');
-            return `
-                <article class="user-card">
-                    <header class="card-header">
-                        <img src="${user.avatar}" alt="${user.fullName}" class="avatar">
-                        <div class="user-info">
-                            <h2>${user.fullName}</h2>
-                            <p>${user.jobTitle}</p>
-                            <p>Team: ${user.team}</p>
-                            <p>${user.location}</p>
+        const UserCard = ({ user }) => {
+            return (
+                <article className="user-card">
+                    <header className="card-header">
+                        <img src={user.avatar} alt={user.fullName} className="avatar" />
+                        <div className="user-info">
+                            <h2>{user.fullName}</h2>
+                            <p>{user.jobTitle}</p>
+                            <p>Team: {user.team}</p>
+                            <p>{user.location}</p>
                         </div>
                     </header>
-                    <section class="jira-tickets">
+                    <section className="jira-tickets">
                         <h3>References</h3>
-                        <ul>${jiraTicketsHtml}</ul>
+                        <ul>
+                            {user.jiraTickets.map(ticket => (
+                                <li key={ticket.id}>{ticket.id}: {ticket.title}</li>
+                            ))}
+                        </ul>
                     </section>
                 </article>
-            `;
-        }
+            );
+        };
 
-        function renderUsers() {
-            document.getElementById('user-grid').innerHTML = users.map(createUserCard).join('');
+        function App() {
+            return (
+                <div className="user-grid">
+                    {users.map((user, index) => (
+                        <UserCard key={`${user.fullName}-${index}`} user={user} />
+                    ))}
+                </div>
+            );
         }
+        
+        const domNode = document.getElementById('root');
+        const root = ReactDOM.createRoot(domNode);
+        root.render(<App />);
 
-        document.addEventListener('DOMContentLoaded', renderUsers);
     </script>
 </body>
 </html>
