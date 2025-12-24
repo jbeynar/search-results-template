@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import UserCard from './UserCard';
 
-const users = [
+const mockUsers = [
     { // JIRA change
         avatar: 'https://randomuser.me/api/portraits/women/0.jpg',
         fullName: 'Aanya Sharma',
@@ -116,6 +116,22 @@ const users = [
 ];
 
 function App() {
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setUsers(mockUsers);
+            setLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (loading) {
+        return <div className="loading">Loading...</div>;
+    }
+
     return (
         <div className="user-grid">
             {users.map((user, index) => (
