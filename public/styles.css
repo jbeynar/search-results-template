@@ -10,26 +10,26 @@ h1 {
     margin-bottom: 1.5rem;
 }
 
-/* Skeleton shimmer */
-@keyframes shimmer {
-    0% {
-        background-position: -200% 0;
+/* Skeleton appearance */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
     }
-    100% {
-        background-position: 200% 0;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
+.user-card:has(.skeleton-shimmer) {
+    opacity: 0;
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--index) * 0.08s);
+}
+
 .skeleton-shimmer {
-    background: linear-gradient(
-        90deg,
-        #f0f0f0 0%,
-        #e0e0e0 20%,
-        #f0f0f0 40%,
-        #f0f0f0 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 1.5s ease-in-out infinite;
+    background: #f0f0f0;
 }
 
 .skeleton-text {
@@ -64,6 +64,7 @@ h1 {
     padding: 1rem;
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
+    min-height: 180px;
 }
 .card-header {
     display: flex;
