@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import UserCard from './UserCard';
 
 const mockUsers = [
@@ -9,12 +9,12 @@ const mockUsers = [
         team: 'Phoenix',
         location: 'Bangalore, India',
         jiraTickets: [
-            { id: 'WEB-1101', title: 'Implement new user dashboard UI' },
-            { id: 'WEB-1105', title: 'Fix CSS bug on login page' },
-            { id: 'WEB-1106', title: 'Add e2e tests for new feature' },
-            { id: 'WEB-1107', title: 'Refactor user model' },
-            { id: 'WEB-1108', title: 'Update dependencies' },
-            { id: 'WEB-1109', title: 'Investigate performance issue' }
+            {id: 'WEB-1101', title: 'Implement new user dashboard UI'},
+            {id: 'WEB-1105', title: 'Fix CSS bug on login page'},
+            {id: 'WEB-1106', title: 'Add e2e tests for new feature'},
+            {id: 'WEB-1107', title: 'Refactor user model'},
+            {id: 'WEB-1108', title: 'Update dependencies'},
+            {id: 'WEB-1109', title: 'Investigate performance issue'}
         ]
     },
     { // Location change
@@ -24,8 +24,8 @@ const mockUsers = [
         team: 'Vanguard',
         location: 'Poland Kraków',
         jiraTickets: [
-            { id: 'API-801', title: 'Optimize database query performance' },
-            { id: 'API-815', title: 'Develop user profile endpoint' }
+            {id: 'API-801', title: 'Optimize database query performance'},
+            {id: 'API-815', title: 'Develop user profile endpoint'}
         ]
     },
     { // JIRA change + Job title change
@@ -35,12 +35,12 @@ const mockUsers = [
         team: 'Creative',
         location: 'London, UK',
         jiraTickets: [
-            { id: 'DSGN-100', title: 'Redesign login page' },
-            { id: 'DSGN-101', title: 'Conduct user research' },
-            { id: 'DSGN-102', title: 'Implement new design system' },
-            { id: 'DSGN-103', title: 'Create style guide' },
-            { id: 'DSGN-104', title: 'Build UI components' },
-            { id: 'DSGN-105', title: 'A/B test new homepage' }
+            {id: 'DSGN-100', title: 'Redesign login page'},
+            {id: 'DSGN-101', title: 'Conduct user research'},
+            {id: 'DSGN-102', title: 'Implement new design system'},
+            {id: 'DSGN-103', title: 'Create style guide'},
+            {id: 'DSGN-104', title: 'Build UI components'},
+            {id: 'DSGN-105', title: 'A/B test new homepage'}
         ]
     },
     { // No random change
@@ -50,8 +50,8 @@ const mockUsers = [
         team: 'Infra',
         location: 'Berlin, Germany',
         jiraTickets: [
-            { id: 'OPS-200', title: 'Automate deployment' },
-            { id: 'OPS-201', title: 'Setup monitoring alerts' }
+            {id: 'OPS-200', title: 'Automate deployment'},
+            {id: 'OPS-201', title: 'Setup monitoring alerts'}
         ]
     },
     { // Location change
@@ -61,8 +61,8 @@ const mockUsers = [
         team: 'Quality',
         location: 'Poland Kraków',
         jiraTickets: [
-            { id: 'QA-300', title: 'Write new test cases' },
-            { id: 'QA-301', title: 'Perform regression testing' }
+            {id: 'QA-300', title: 'Write new test cases'},
+            {id: 'QA-301', title: 'Perform regression testing'}
         ]
     },
     { // JIRA change + Job title change
@@ -72,12 +72,12 @@ const mockUsers = [
         team: 'Analytics',
         location: 'New York, USA',
         jiraTickets: [
-            { id: 'DATA-400', title: 'Build predictive model' },
-            { id: 'DATA-401', title: 'Analyze user behavior' },
-            { id: 'DATA-402', title: 'Deploy new model to production' },
-            { id: 'DATA-403', title: 'Optimize training pipeline' },
-            { id: 'DATA-404', title: 'Research new algorithms' },
-            { id: 'DATA-405', title: 'Create data visualization dashboard' }
+            {id: 'DATA-400', title: 'Build predictive model'},
+            {id: 'DATA-401', title: 'Analyze user behavior'},
+            {id: 'DATA-402', title: 'Deploy new model to production'},
+            {id: 'DATA-403', title: 'Optimize training pipeline'},
+            {id: 'DATA-404', title: 'Research new algorithms'},
+            {id: 'DATA-405', title: 'Create data visualization dashboard'}
         ]
     },
     { // Location change + Job title change
@@ -87,8 +87,8 @@ const mockUsers = [
         team: 'Product',
         location: 'Poland Kraków',
         jiraTickets: [
-            { id: 'PROD-500', title: 'Define Q3 roadmap' },
-            { id: 'PROD-501', title: 'Gather user feedback' }
+            {id: 'PROD-500', title: 'Define Q3 roadmap'},
+            {id: 'PROD-501', title: 'Gather user feedback'}
         ]
     },
     { // No random change
@@ -98,8 +98,8 @@ const mockUsers = [
         team: 'Mobile',
         location: 'Tokyo, Japan',
         jiraTickets: [
-            { id: 'MOB-600', title: 'Implement push notifications' },
-            { id: 'MOB-601', title: 'Fix iOS compatibility bug' }
+            {id: 'MOB-600', title: 'Implement push notifications'},
+            {id: 'MOB-601', title: 'Fix iOS compatibility bug'}
         ]
     },
     {
@@ -109,8 +109,100 @@ const mockUsers = [
         team: 'Innovate',
         location: 'Seoul, South Korea',
         jiraTickets: [
-            { id: 'FS-700', title: 'Develop new API gateway' },
-            { id: 'FS-701', title: 'Integrate payment module' }
+            {id: 'FS-700', title: 'Develop new API gateway'},
+            {id: 'FS-701', title: 'Integrate payment module'}
+        ]
+    },
+    {
+        avatar: 'https://randomuser.me/api/portraits/women/4.jpg',
+        fullName: 'Sarah Chen',
+        jobTitle: 'Security Engineer',
+        team: 'Security',
+        location: 'Singapore',
+        jiraTickets: [
+            {id: 'SEC-101', title: 'Implement OAuth 2.0'},
+            {id: 'SEC-102', title: 'Security audit for API'}
+        ]
+    },
+    {
+        avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
+        fullName: 'Marcus Johnson',
+        jobTitle: 'Cloud Architect',
+        team: 'Infrastructure',
+        location: 'Austin, USA',
+        jiraTickets: [
+            {id: 'CLOUD-201', title: 'Migrate to Kubernetes'},
+            {id: 'CLOUD-202', title: 'Setup multi-region deployment'},
+            {id: 'CLOUD-203', title: 'Cost optimization review'}
+        ]
+    },
+    {
+        avatar: 'https://randomuser.me/api/portraits/women/5.jpg',
+        fullName: 'Anna Müller',
+        jobTitle: 'Data Engineer',
+        team: 'Data Platform',
+        location: 'Munich, Germany',
+        jiraTickets: [
+            {id: 'DATA-501', title: 'Build ETL pipeline'},
+            {id: 'DATA-502', title: 'Data warehouse optimization'}
+        ]
+    },
+    {
+        avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
+        fullName: 'Carlos Rodriguez',
+        jobTitle: 'Technical Lead',
+        team: 'Core Platform',
+        location: 'Madrid, Spain',
+        jiraTickets: [
+            {id: 'CORE-301', title: 'Architecture review'},
+            {id: 'CORE-302', title: 'Tech debt cleanup'},
+            {id: 'CORE-303', title: 'Performance benchmarking'}
+        ]
+    },
+    {
+        avatar: 'https://randomuser.me/api/portraits/women/6.jpg',
+        fullName: 'Lisa Anderson',
+        jobTitle: 'Product Designer',
+        team: 'Design',
+        location: 'Stockholm, Sweden',
+        jiraTickets: [
+            {id: 'UX-401', title: 'User journey mapping'},
+            {id: 'UX-402', title: 'Design system tokens'}
+        ]
+    },
+    {
+        avatar: 'https://randomuser.me/api/portraits/men/7.jpg',
+        fullName: 'Ahmed Hassan',
+        jobTitle: 'Site Reliability Engineer',
+        team: 'SRE',
+        location: 'Dubai, UAE',
+        jiraTickets: [
+            {id: 'SRE-501', title: 'Incident response automation'},
+            {id: 'SRE-502', title: 'SLO dashboard creation'},
+            {id: 'SRE-503', title: 'Chaos engineering setup'}
+        ]
+    },
+    {
+        avatar: 'https://randomuser.me/api/portraits/women/7.jpg',
+        fullName: 'Yuki Tanaka',
+        jobTitle: 'iOS Developer',
+        team: 'Mobile',
+        location: 'Osaka, Japan',
+        jiraTickets: [
+            {id: 'IOS-601', title: 'SwiftUI migration'},
+            {id: 'IOS-602', title: 'App Store optimization'}
+        ]
+    },
+    {
+        avatar: 'https://randomuser.me/api/portraits/men/8.jpg',
+        fullName: 'Peter Wright',
+        jobTitle: 'Engineering Manager',
+        team: 'Platform',
+        location: 'Sydney, Australia',
+        jiraTickets: [
+            {id: 'MGMT-701', title: 'Q4 planning'},
+            {id: 'MGMT-702', title: 'Team growth strategy'},
+            {id: 'MGMT-703', title: 'Technical roadmap'}
         ]
     }
 ];
@@ -139,17 +231,19 @@ function App() {
         }
     }, [loading, visibleCount, users.length]);
 
-    const remainingSkeletons = loading ? 9 : Math.max(0, 9 - visibleCount);
+    const remainingSkeletons = loading ? 18 : Math.max(0, 18 - visibleCount);
 
     return (
-        <div className="user-grid">
-            {users.slice(0, visibleCount).map((user, index) => (
-                <UserCard key={`${user.fullName}-${index}`} user={user} index={index} />
-            ))}
-            {Array.from({ length: remainingSkeletons }).map((_, index) => (
-                <UserCard key={`skeleton-${index}`} skeleton index={visibleCount + index} />
-            ))}
-        </div>
+        <React.Fragment>
+            <div className="user-grid">
+                {users.slice(0, visibleCount).map((user, index) => (
+                    <UserCard key={`${user.fullName}-${index}`} user={user} index={index}/>
+                ))}
+                {Array.from({length: remainingSkeletons}).map((_, index) => (
+                    <UserCard key={`skeleton-${index}`} skeleton index={visibleCount + index}/>
+                ))}
+            </div>
+        </React.Fragment>
     );
 }
 
