@@ -87,8 +87,8 @@ const UserCard = ({user, index, skeleton}) => {
                 <ul>
                     {user.jiraTickets.map((ticket, i) => (
                         <li key={ticket.id}>
-                            <MatrixText text={ticket.id} delay={i * 100}/> <MatrixText text={ticket.title}
-                                                                                       delay={i * 100 + 200}/>
+                            <MatrixText text={ticket.id} delay={i * 350}/> <MatrixText text={ticket.title}
+                                                                                       delay={i * 350 + 250}/>
                         </li>
                     ))}
                 </ul>
