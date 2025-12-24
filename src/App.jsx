@@ -124,16 +124,17 @@ function App() {
         const timer = setTimeout(() => {
             setUsers(mockUsers);
             setLoading(false);
-        }, 2000);
+        }, 100);
 
         return () => clearTimeout(timer);
     }, []);
 
     useEffect(() => {
+        const DATA_LOAD_DELAY = Math.floor(Math.random() * 800) + 200;
         if (!loading && visibleCount < users.length) {
             const timer = setTimeout(() => {
                 setVisibleCount(prev => prev + 1);
-            }, 1000);
+            }, DATA_LOAD_DELAY);
             return () => clearTimeout(timer);
         }
     }, [loading, visibleCount, users.length]);
