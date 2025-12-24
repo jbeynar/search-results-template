@@ -19,11 +19,11 @@ body {
 #logo.animate {
     background: linear-gradient(
         135deg,
-        #667eea 0%,
-        #764ba2 25%,
-        #f093fb 50%,
-        #f5576c 75%,
-        #4facfe 100%
+        #b12d2d 0%,
+        #ffffff 25%,
+        #000000 50%,
+        #ca0909 75%,
+        #a51010 100%
     );
     background-size: 200% 200%;
     -webkit-background-clip: text;
@@ -98,7 +98,12 @@ body {
     min-height: 180px;
     transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-grid:hover .user-card:not(:hover) {
+    opacity: 0.6;
 }
 
 @keyframes zoomIn {
@@ -106,7 +111,8 @@ body {
         transform: scale(1);
     }
     100% {
-        transform: scale(1.2);
+        transform: scale(1.08);
+        box-shadow: 0 4px 20px rgba(53, 53, 53, 0.5);
     }
 }
 
@@ -114,7 +120,7 @@ body {
     background-color: #fafafa;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08),
                 0 2px 8px rgba(0, 0, 0, 0.04);
-    animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation: zoomIn 0.3s ease-in forwards;
     z-index: 10;
 }
 
