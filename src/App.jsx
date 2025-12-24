@@ -128,15 +128,16 @@ function App() {
         return () => clearTimeout(timer);
     }, []);
 
-    if (loading) {
-        return <div className="loading">Loading...</div>;
-    }
-
     return (
         <div className="user-grid">
-            {users.map((user, index) => (
-                <UserCard key={`${user.fullName}-${index}`} user={user} />
-            ))}
+            {loading
+                ? Array.from({ length: 9 }).map((_, index) => (
+                    <UserCard key={`skeleton-${index}`} skeleton index={index} />
+                ))
+                : users.map((user, index) => (
+                    <UserCard key={`${user.fullName}-${index}`} user={user} index={index} />
+                ))
+            }
         </div>
     );
 }

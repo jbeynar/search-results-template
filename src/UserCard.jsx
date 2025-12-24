@@ -1,8 +1,29 @@
 import React from 'react';
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, index, skeleton }) => {
+    if (skeleton) {
+        return (
+            <article className="user-card" style={{ '--index': index }}>
+                <header className="card-header">
+                    <div className="avatar skeleton-shimmer" />
+                    <div className="user-info">
+                        <div className="skeleton-shimmer skeleton-text skeleton-title" />
+                        <div className="skeleton-shimmer skeleton-text" />
+                        <div className="skeleton-shimmer skeleton-text skeleton-short" />
+                    </div>
+                </header>
+                <section className="jira-tickets">
+                    <div className="skeleton-shimmer skeleton-text skeleton-heading" />
+                    <div className="skeleton-shimmer skeleton-text" />
+                    <div className="skeleton-shimmer skeleton-text" />
+                    <div className="skeleton-shimmer skeleton-text skeleton-short" />
+                </section>
+            </article>
+        );
+    }
+
     return (
-        <article className="user-card">
+        <article className="user-card" style={{ '--index': index }}>
             <header className="card-header">
                 <img src={user.avatar} alt={user.fullName} className="avatar" />
                 <div className="user-info">
