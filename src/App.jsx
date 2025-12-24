@@ -118,6 +118,7 @@ const mockUsers = [
 function App() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [visibleCount, setVisibleCount] = useState(0);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -128,16 +129,25 @@ function App() {
         return () => clearTimeout(timer);
     }, []);
 
+    useEffect(() => {
+        if (!loading && visibleCount < users.length) {
+            const timer = setTimeout(() => {
+                setVisibleCount(prev => prev + 1);
+            }, 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [loading, visibleCount, users.length]);
+
+    const remainingSkeletons = loading ? 9 : Math.max(0, 9 - visibleCount);
+
     return (
         <div className="user-grid">
-            {loading
-                ? Array.from({ length: 9 }).map((_, index) => (
-                    <UserCard key={`skeleton-${index}`} skeleton index={index} />
-                ))
-                : users.map((user, index) => (
-                    <UserCard key={`${user.fullName}-${index}`} user={user} index={index} />
-                ))
-            }
+            {users.slice(0, visibleCount).map((user, index) => (
+                <UserCard key={`${user.fullName}-${index}`} user={user} index={index} />
+            ))}
+            {Array.from({ length: remainingSkeletons }).map((_, index) => (
+                <UserCard key={`skeleton-${index}`} skeleton index={visibleCount + index} />
+            ))}
         </div>
     );
 }

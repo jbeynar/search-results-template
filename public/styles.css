@@ -28,8 +28,26 @@ h1 {
     animation-delay: calc(var(--index) * 0.08s);
 }
 
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
 .skeleton-shimmer {
-    background: #f0f0f0;
+    background: linear-gradient(
+        90deg,
+        #e8e8e8 0%,
+        #d4d4d4 25%,
+        #e8e8e8 50%,
+        #d4d4d4 75%,
+        #e8e8e8 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
 }
 
 .skeleton-text {
