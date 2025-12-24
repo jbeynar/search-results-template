@@ -146,64 +146,6 @@ const mockUsers = [
             {id: 'DATA-501', title: 'Build ETL pipeline'},
             {id: 'DATA-502', title: 'Data warehouse optimization'}
         ]
-    },
-    {
-        avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
-        fullName: 'Carlos Rodriguez',
-        jobTitle: 'Technical Lead',
-        team: 'Core Platform',
-        location: 'Madrid, Spain',
-        jiraTickets: [
-            {id: 'CORE-301', title: 'Architecture review'},
-            {id: 'CORE-302', title: 'Tech debt cleanup'},
-            {id: 'CORE-303', title: 'Performance benchmarking'}
-        ]
-    },
-    {
-        avatar: 'https://randomuser.me/api/portraits/women/6.jpg',
-        fullName: 'Lisa Anderson',
-        jobTitle: 'Product Designer',
-        team: 'Design',
-        location: 'Stockholm, Sweden',
-        jiraTickets: [
-            {id: 'UX-401', title: 'User journey mapping'},
-            {id: 'UX-402', title: 'Design system tokens'}
-        ]
-    },
-    {
-        avatar: 'https://randomuser.me/api/portraits/men/7.jpg',
-        fullName: 'Ahmed Hassan',
-        jobTitle: 'Site Reliability Engineer',
-        team: 'SRE',
-        location: 'Dubai, UAE',
-        jiraTickets: [
-            {id: 'SRE-501', title: 'Incident response automation'},
-            {id: 'SRE-502', title: 'SLO dashboard creation'},
-            {id: 'SRE-503', title: 'Chaos engineering setup'}
-        ]
-    },
-    {
-        avatar: 'https://randomuser.me/api/portraits/women/7.jpg',
-        fullName: 'Yuki Tanaka',
-        jobTitle: 'iOS Developer',
-        team: 'Mobile',
-        location: 'Osaka, Japan',
-        jiraTickets: [
-            {id: 'IOS-601', title: 'SwiftUI migration'},
-            {id: 'IOS-602', title: 'App Store optimization'}
-        ]
-    },
-    {
-        avatar: 'https://randomuser.me/api/portraits/men/8.jpg',
-        fullName: 'Peter Wright',
-        jobTitle: 'Engineering Manager',
-        team: 'Platform',
-        location: 'Sydney, Australia',
-        jiraTickets: [
-            {id: 'MGMT-701', title: 'Q4 planning'},
-            {id: 'MGMT-702', title: 'Team growth strategy'},
-            {id: 'MGMT-703', title: 'Technical roadmap'}
-        ]
     }
 ];
 
@@ -231,7 +173,7 @@ function App() {
         }
     }, [loading, visibleCount, users.length]);
 
-    const remainingSkeletons = loading ? 18 : Math.max(0, 18 - visibleCount);
+    const remainingSkeletons = loading ? 12 : Math.max(0, 12 - visibleCount);
 
     return (
         <React.Fragment>
