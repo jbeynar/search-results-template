@@ -1,0 +1,29 @@
+.logo {
+    display: inline-block;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    animation: slideReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideReveal {
+    0% {
+        font-size: 100px;
+        opacity: 0;
+        filter: blur(20px);
+    }
+    100% {
+        font-size: 30px;
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}

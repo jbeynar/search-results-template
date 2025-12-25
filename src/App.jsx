@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import UserCard from './UserCard';
+import React from 'react';
+import Logo from './components/Logo';
+import UserGrid from './components/UserGrid';
 
 const mockUsers = [
-    { // JIRA change
+    {
         avatar: 'https://randomuser.me/api/portraits/women/0.jpg',
         fullName: 'Aanya Sharma',
         jobTitle: 'Senior Frontend Developer',
@@ -17,7 +18,7 @@ const mockUsers = [
             {id: 'WEB-1109', title: 'Investigate performance issue'}
         ]
     },
-    { // Location change
+    {
         avatar: 'https://randomuser.me/api/portraits/men/0.jpg',
         fullName: 'Jan Kowalski',
         jobTitle: 'Backend Engineer',
@@ -28,7 +29,7 @@ const mockUsers = [
             {id: 'API-815', title: 'Develop user profile endpoint'}
         ]
     },
-    { // JIRA change + Job title change
+    {
         avatar: 'https://randomuser.me/api/portraits/women/1.jpg',
         fullName: 'Emily White',
         jobTitle: 'Frontend Engineer',
@@ -43,7 +44,7 @@ const mockUsers = [
             {id: 'DSGN-105', title: 'A/B test new homepage'}
         ]
     },
-    { // No random change
+    {
         avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
         fullName: 'Michael Green',
         jobTitle: 'DevOps Engineer',
@@ -54,7 +55,7 @@ const mockUsers = [
             {id: 'OPS-201', title: 'Setup monitoring alerts'}
         ]
     },
-    { // Location change
+    {
         avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
         fullName: 'Sophia Brown',
         jobTitle: 'QA Engineer',
@@ -65,7 +66,7 @@ const mockUsers = [
             {id: 'QA-301', title: 'Perform regression testing'}
         ]
     },
-    { // JIRA change + Job title change
+    {
         avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
         fullName: 'William Black',
         jobTitle: 'Machine Learning Engineer',
@@ -80,7 +81,7 @@ const mockUsers = [
             {id: 'DATA-405', title: 'Create data visualization dashboard'}
         ]
     },
-    { // Location change + Job title change
+    {
         avatar: 'https://randomuser.me/api/portraits/women/3.jpg',
         fullName: 'Olivia Red',
         jobTitle: 'Software Architect',
@@ -91,7 +92,7 @@ const mockUsers = [
             {id: 'PROD-501', title: 'Gather user feedback'}
         ]
     },
-    { // No random change
+    {
         avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
         fullName: 'James Blue',
         jobTitle: 'Mobile Developer',
@@ -150,42 +151,11 @@ const mockUsers = [
 ];
 
 function App() {
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [visibleCount, setVisibleCount] = useState(0);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setUsers(mockUsers);
-            setLoading(false);
-        }, 100);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    useEffect(() => {
-        const DATA_LOAD_DELAY = Math.floor(Math.random() * 800) + 200;
-        if (!loading && visibleCount < users.length) {
-            const timer = setTimeout(() => {
-                setVisibleCount(prev => prev + 1);
-            }, DATA_LOAD_DELAY);
-            return () => clearTimeout(timer);
-        }
-    }, [loading, visibleCount, users.length]);
-
-    const remainingSkeletons = loading ? 12 : Math.max(0, 12 - visibleCount);
-
     return (
-        <React.Fragment>
-            <div className="user-grid">
-                {users.slice(0, visibleCount).map((user, index) => (
-                    <UserCard key={`${user.fullName}-${index}`} user={user} index={index}/>
-                ))}
-                {Array.from({length: remainingSkeletons}).map((_, index) => (
-                    <UserCard key={`skeleton-${index}`} skeleton index={visibleCount + index}/>
-                ))}
-            </div>
-        </React.Fragment>
+        <>
+            <Logo>WhoKnows</Logo>
+            <UserGrid users={mockUsers} skeletonCount={12} />
+        </>
     );
 }
 
