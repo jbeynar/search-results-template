@@ -5,7 +5,7 @@ import './UserCard.css';
 const UserCard = ({user, index, skeleton}) => {
     if (skeleton) {
         return (
-            <article className="user-card" style={{'--index': index}}>
+            <article className="user-card user-card--skeleton" style={{'--index': index}}>
                 <header className="card-header">
                     <div className="avatar skeleton-shimmer"/>
                     <div className="user-info">
