@@ -1,6 +1,6 @@
 .user-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     max-width: 1200px;
     margin: 0 auto;
     border-top: 1px solid #eee;
