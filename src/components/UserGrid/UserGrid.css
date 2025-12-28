@@ -8,7 +8,7 @@
 }
 
 .user-grid:hover .user-card:not(:hover) {
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 @media (max-width: 768px) {

@@ -296,7 +296,7 @@ function App() {
     return (
         <>
             <Logo>WhoKnows</Logo>
-            <UserGrid users={mockUsers} skeletonCount={12} />
+            <UserGrid users={mockUsers} />
         </>
     );
 }
