@@ -1,0 +1,56 @@
+/* Skeleton shimmer effect */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton-card {
+    padding: 1rem;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    min-height: 180px;
+    overflow: hidden;
+}
+
+.skeleton-shimmer {
+    background: linear-gradient(90deg, #e8e8e8 25%, #f5f5f5 50%, #e8e8e8 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.skeleton-text {
+    height: 0.9rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.skeleton-title {
+    width: 70%;
+    height: 1.2rem;
+}
+
+.skeleton-heading {
+    width: 40%;
+    margin-top: 1rem;
+}
+
+.skeleton-short {
+    width: 50%;
+}
+
+.skeleton-card .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.skeleton-card .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}

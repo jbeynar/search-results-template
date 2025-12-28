@@ -1,9 +1,9 @@
-import React from 'react';
-import './UserCard.css';
+import React from "react";
+import "./UserCard.css";
 
 const UserCard = ({user, index}) => {
     return (
-        <article className="user-card" style={{'--index': index}}>
+        <article className="user-card" style={{"--index": index}}>
             <header className="card-header">
                 <img src={user.avatar} alt={user.fullName} className="avatar"/>
                 <div className="user-info">

@@ -33,40 +33,6 @@
 }
 
 /* src/components/UserCard/UserCard.css */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.user-card:has(.skeleton-shimmer) {
-  opacity: 0;
-  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: calc(var(--index) * 0.08s);
-}
-.skeleton-shimmer {
-  background: #e8e8e8;
-}
-.skeleton-text {
-  height: 0.9rem;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
-}
-.skeleton-title {
-  width: 70%;
-  height: 1.2rem;
-}
-.skeleton-heading {
-  width: 40%;
-  margin-top: 1rem;
-}
-.skeleton-short {
-  width: 50%;
-}
 .user-card {
   padding: 1rem;
   border-right: 1px solid #eee;
@@ -88,7 +54,7 @@
     box-shadow: 0 4px 20px rgba(53, 53, 53, 0.5);
   }
 }
-.user-card:not(.user-card--skeleton):hover {
+.user-card:hover {
   background-color: #fafafa;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
   animation: zoomIn 0.2s ease-in forwards;
@@ -132,10 +98,54 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.jira-tickets li .jira-id {
-  min-width: 55px;
-  margin-right: 6px;
-  display: inline-block;
+
+/* src/components/SkeletonCard/SkeletonCard.css */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.skeleton-card {
+  padding: 1rem;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  min-height: 180px;
+  overflow: hidden;
+}
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #e8e8e8 25%, #f5f5f5 50%, #e8e8e8 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+.skeleton-text {
+  height: 0.9rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+.skeleton-title {
+  width: 70%;
+  height: 1.2rem;
+}
+.skeleton-heading {
+  width: 40%;
+  margin-top: 1rem;
+}
+.skeleton-short {
+  width: 50%;
+}
+.skeleton-card .card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.skeleton-card .avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 1rem;
 }
 
 /* src/components/UserGrid/UserGrid.css */
